@@ -21,7 +21,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-
+    datePicker.minimumDate = NSDate()
 
     for con in viewToMove.superview!.constraints {
       print(" -> \(con.description)\n")
@@ -39,6 +39,7 @@ class ViewController: UIViewController {
   @IBAction func showActionSheet(sender: AnyObject) {
   UIView.animateWithDuration(Double(0.6), animations: {
     self.centerYConstraintViewToMove.constant -= 200
+    self.datePicker.alpha = 1
     self.view.layoutIfNeeded()
     })
 
@@ -48,12 +49,13 @@ class ViewController: UIViewController {
 
 
 
-
+// hide date picker
   @IBAction func displayActionSheet(sender: AnyObject) {
     // animate the UIView containing the date picker outside 
     //of the view
   UIView.animateWithDuration(Double(0.6), animations: {
       self.centerYConstraintViewToMove.constant += 200
+      self.datePicker.alpha = 0.5
       self.view.layoutIfNeeded()
       })
 
