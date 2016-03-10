@@ -22,10 +22,15 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
     datePicker.minimumDate = NSDate()
+    //viewToMove.alpha = 0
 
-    for con in viewToMove.superview!.constraints {
-      print(" -> \(con.description)\n")
-    }
+    print("center.y...\(viewToMove.center.y)")
+    print("centerYAnchor...\(viewToMove.centerYAnchor)")
+    print("constraints...\(viewToMove.constraints)")
+    print("frame.origin.y...\(viewToMove.frame.origin.y)")
+    print("frame.height...\(viewToMove.frame.height)")
+
+
   }
 
 
@@ -38,8 +43,9 @@ class ViewController: UIViewController {
 
   @IBAction func showActionSheet(sender: AnyObject) {
   UIView.animateWithDuration(Double(0.6), animations: {
-    self.centerYConstraintViewToMove.constant -= 200
-    self.datePicker.alpha = 1
+    //self.centerYConstraintViewToMove.constant -= 200
+    self.viewToMove.alpha = 1
+    self.viewToMove.frame.origin.y -= self.viewToMove.frame.height
     self.view.layoutIfNeeded()
     })
 
@@ -54,8 +60,9 @@ class ViewController: UIViewController {
     // animate the UIView containing the date picker outside 
     //of the view
   UIView.animateWithDuration(Double(0.6), animations: {
-      self.centerYConstraintViewToMove.constant += 200
-      self.datePicker.alpha = 0.5
+      //self.centerYConstraintViewToMove.constant += 200
+      self.viewToMove.alpha = 0
+      self.viewToMove.frame.origin.y += self.viewToMove.frame.height
       self.view.layoutIfNeeded()
       })
 
